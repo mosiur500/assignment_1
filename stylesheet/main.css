@@ -1,0 +1,111 @@
+*{
+	box-sizing: border-box;
+	padding: 0px;
+	margin: 0px;
+
+}
+
+body {
+    font-family: Lato, sans-serif;
+    margin: 0;
+    display: grid;
+    color: #333;
+    grid-template-columns: 30% auto;
+    grid-template-rows: 60px auto 60px;
+    grid-template-areas: "header header"
+                         "main ."
+                         "footer footer";
+}
+
+
+.leave_form{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-content: flex-start;
+	text-align: left;
+}
+
+input, select, button,li,h2 {
+	border: 1px solid #ddd;
+	width: auto;
+	height: 50px;
+	margin: 5px;
+	padding: 10px;
+}
+
+.button {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+
+label {
+	display: grid;
+	grid-template-columns: 30% auto;
+	padding: 10px;
+}
+
+button{
+	background-color: #0B1032;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+  	font-size: 16px;
+  	outline: none;
+  	border-radius: 15px;
+}
+
+button:hover {
+	background-color: #EA2A33
+}
+
+::placeholder{
+	color:#333;
+}
+
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+input[type=file] {
+	background: none;
+	margin: 0 5px;
+}
+
+header,
+aside,
+main,
+footer { 
+    padding: 16px;
+    text-align: center;
+}
+
+header {
+
+	display: flex;
+    background: #ddd;
+    grid-area: header;
+    justify-content: flex-start;
+}
+
+header > img {
+	width: 190px;
+	height: 30px;
+}
+
+main {
+    grid-area: main;
+}
+
+form > name {
+	background: $fcfcfc;
+}
+
+footer {
+    grid-area: footer;
+}
