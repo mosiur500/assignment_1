@@ -10,28 +10,79 @@ body {
     margin: 0;
     display: grid;
     color: #333;
-    grid-template-columns: 30% auto 30%;
+    grid-template-columns: 20% auto 20%;
     grid-template-rows: 60px auto 60px;
     grid-template-areas: "header header header"
-                         ". main ."
+                         "main main main"
                          "footer footer footer";
 }
 
 
+/* table: leave application details */
+.tbl_leave_data{
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	color: #333;
+	min-width: 400px;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.tbl_leave_data th {
+	padding: 12px 15px;
+}
+
+
+.tbl_leave_data tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.tbl_leave_data tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.tbl_leave_data tbody tr:last-of-type {
+  border-bottom: 2px solid #0B1032;
+}
+
+.tbl_leave_data tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}
+
+#tbl_header{
+  	text-align: left;
+  	background-color: #0B1032;
+  	color: white;
+  	text-align: center;
+  	width: 100%;
+  	font-size: 16px;
+  	font-style: bold;
+}
+
+/* Leave Form */
+
 .leave_form{
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
-	align-content: flex-start;
 	text-align: left;
+	align-self: center;
+	max-width: 700px;
+	overflow: hidden;
 }
 
+/* From ... To */
 .range{
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr 3fr; 
+	grid-gap: 10px;
 }
 
-input, select, button,li,h2 {
+
+
+input, select, button,h2 {
 	border: 1px solid #ddd;
 	width: auto;
 	height: 50px;
@@ -39,9 +90,16 @@ input, select, button,li,h2 {
 	padding: 10px;
 }
 
+h2{
+	background-color: #0B1032;
+	text-align: center;
+	color: white;	
+}
+
 .button {
 	display: grid;
 	grid-template-columns: 50% 50%;
+	align-self: center;
 }
 
 
@@ -61,7 +119,7 @@ button{
 	display: inline-block;
   	font-size: 16px;
   	outline: none;
-  	border-radius: 15px;
+  	border-radius: 10px;
 }
 
 button:hover {
@@ -70,6 +128,11 @@ button:hover {
 
 ::placeholder{
 	color:#333;
+}
+
+#btn_add_req{
+	max-width: 400px;
+	align-self: center;
 }
 
 
@@ -91,11 +154,11 @@ footer {
 
 
 header {
-
 	display: flex;
     background: #ddd;
     grid-area: header;
     justify-content: flex-start;
+    text-align: center;
 }
 
 header > img {
@@ -104,7 +167,12 @@ header > img {
 }
 
 main {
+	display: flex;
     grid-area: main;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+
 }
 
 form > name {
