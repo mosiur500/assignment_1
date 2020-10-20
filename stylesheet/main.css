@@ -10,11 +10,11 @@ body {
     margin: 0;
     display: grid;
     color: #333;
-    grid-template-columns: 30% auto;
+    grid-template-columns: 30% auto 30%;
     grid-template-rows: 60px auto 60px;
-    grid-template-areas: "header header"
-                         "main ."
-                         "footer footer";
+    grid-template-areas: "header header header"
+                         ". main ."
+                         "footer footer footer";
 }
 
 
@@ -24,6 +24,11 @@ body {
 	justify-content: flex-start;
 	align-content: flex-start;
 	text-align: left;
+}
+
+.range{
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr 3fr; 
 }
 
 input, select, button,li,h2 {
@@ -78,12 +83,12 @@ input[type=file] {
 }
 
 header,
-aside,
 main,
 footer { 
     padding: 16px;
     text-align: center;
 }
+
 
 header {
 
