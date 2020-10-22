@@ -1,72 +1,80 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Enosis</title>
 	<link rel="stylesheet" type="text/css" href="stylesheet/main.css">
+	<script type="text/javascript" src="script/main.js"></script>
 </head>
+
 <body>
 	<header>
 		<img id="enosis-logo" src="https://www.enosisbd.com/wp-content/uploads/2020/07/enosis-logo.png">
 	</header>
 
-	<main >
-		<button id="btn_add_req" onclick="document.location='leave_form.html' ">ADD NEW REQUEST</button>
-		<table class="tbl_leave_data">
-			<tr id="tbl_header">
-				<th>Name</th>
+	<main id="MainPage">
+		<div id="Options">
+			<button id="BtnAddReq" onclick="requestPage()">ADD REQUEST</button>
+			<input type="text" id="SearchQuery" name="search" placeholder="search for entry">
+			<button id="BtnSearch" onclick="Search()">Search</button>
+		</div>
+		<table class="tbl-leave-data" id="List">
+			<tr id="TblHeader">
 				<th>ID</th>
 				<th>Email</th>
+				<th>Name</th>
 				<th>Leave Type</th>
 				<th>Leave Reason</th>
 				<th>From</th>
 				<th>To</th>
+				<th>Leave Count</th>
 				<th>Document</th>
 				<th></th>
 				<th></th>
 			</tr>
 			<tr>
-				<th>Mosiur Rahman Sweet</th>
-				<th>500</th>
-				<th>mosiur.rahman@enosisbd.com</th>
-				<th>Planned</th>
-				<th>Unknown</th>
-				<th>08/10/1996</th>
-				<th>29/10/2020</th>
-				<th><a href="image/doc.png" target="_blank">document.png</a></th>
-				<th><img src="image/edit.png" width="20px" height="20px"></th>
-				<th><img src="image/delete.png" width="20px" height="20px"></th>
-				
-			</tr>
-			<tr>
-				<th>Mosiur Rahman Sweet</th>
-				<th>500</th>
-				<th>mosiur.rahman@enosisbd.com</th>
-				<th>Planned</th>
-				<th>Unknown</th>
-				<th>08/10/1996</th>
-				<th>29/10/2020</th>
-				<th><a href="image/doc.png" target="_blank">document.png</a></th>
-				<th><img src="image/edit.png" width="20px" height="20px"></th>
-				<th><img src="image/delete.png" width="20px" height="20px"></th>
-				
-			</tr>
-			<tr>
-				<th>Mosiur Rahman Sweet</th>
-				<th>500</th>
-				<th>mosiur.rahman@enosisbd.com</th>
-				<th>Planned</th>
-				<th>Unknown</th>
-				<th>08/10/1996</th>
-				<th>29/10/2020</th>
-				<th><a href="image/doc.png" target="_blank">document.png</a></th>
-				<th><img src="image/edit.png" width="20px" height="20px"></th>
-				<th><img src="image/delete.png" width="20px" height="20px"></th>
-				
-			</tr>
+				<td>500</td>
+				<td>mosiur.rahman@enosisbd.com</td>
+				<td>Mosiur Rahman Sweet</td>
+				<td>Planned</td>
+				<td>Unknown</td>
+				<td>26/11/2020</td>
+				<td>27/11/2020</td>
+				<td>2</td>
+				<td><a href="image/doc.png" target="_blank"><img id="DocumentImage" src="image/doc.png" alt="edit"></a>
+				</td>
+				<td><img class="icon" src="image/edit.png" onclick="requestPage()" alt="edit"></td>
+				<td><img class="icon" src="image/delete.png" onclick="deleteRow(this)" alt="delete"></td>
 
+			</tr>
 		</table>
+	</main>
+	<main id="LeaveFormPage">
+		<form class="leave-form" method="post">
+			<h2>Leave Form</h2>
+			<input type="text" name="fistName" id="FirstName" placeholder="First Name">
+			<input type="text" name="lastName" id="LastName" placeholder="Last Name">
+			<input type="text" name="id" id="Id" placeholder="Employee ID">
+			<input type="email" name="email" id="Email" placeholder="Email">
+			<select name="leaveType" id="LeaveType">
+				<option value="-1">Leave Type </option>
+				<option value="planned">Planned</option>
+				<option value="unplanned">Unplanned</option>
+			</select>
+			<input type="text" name="leaveReason" id="LeaveReason" placeholder="Leave Reason">
 
-		
+			<label class="range">From: <input type="date" placeholder="dd-mm-yyyy" id="LeaveStart" name="leave_start">
+				To:<input type="date" id="LeaveEnd" placeholder="dd-mm-yyyy" name="leave_end">
+			</label>
+			<label for="file">Upload Image
+				<input type="file" accept="image/*" name="image" id="File" onchange="loadFile(event)">
+				<img id="ImagePreview" /></label>
+			</label>
+		</form>
+		<div class="button">
+			<button id="submit" value="Submit" onclick="getFormData();">Submit</button>
+			<button id="cancel" value="cancel" onclick="mainPage();">Cancel</button> </div>
+
 	</main>
 
 	<footer>
@@ -74,4 +82,5 @@
 	</footer>
 
 </body>
+
 </html>

@@ -2,10 +2,9 @@
 	box-sizing: border-box;
 	padding: 0px;
 	margin: 0px;
-
 }
 
-body {
+body{
     font-family: Lato, sans-serif;
     margin: 0;
     display: grid;
@@ -17,9 +16,20 @@ body {
                          "footer footer footer";
 }
 
+#MainPage{
+	visibility: visible;
+}
+
+#LeaveFormPage{
+	visibility: hidden;
+}
+
+#List{
+	visibility: hidden;
+}
 
 /* table: leave application details */
-.tbl_leave_data{
+.tbl-leave-data{
 	border-collapse: collapse;
 	margin: 25px 0;
 	font-size: 0.9em;
@@ -30,29 +40,28 @@ body {
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.tbl_leave_data th {
+.tbl-leave-data th{
 	padding: 12px 15px;
 }
 
-
-.tbl_leave_data tbody tr {
+.tbl-leave-data tbody tr{
   border-bottom: 1px solid #dddddd;
 }
 
-.tbl_leave_data tbody tr:nth-of-type(even) {
+.tbl-leave-data tbody tr:nth-of-type(even){
   background-color: #f3f3f3;
 }
 
-.tbl_leave_data tbody tr:last-of-type {
+.tbl-leave-data tbody tr:last-of-type {
   border-bottom: 2px solid #0B1032;
 }
 
-.tbl_leave_data tbody tr.active-row {
+.tbl-leave-data tbody tr.active-row{
   font-weight: bold;
   color: #009879;
 }
 
-#tbl_header{
+#TblHeader{
   	text-align: left;
   	background-color: #0B1032;
   	color: white;
@@ -62,9 +71,29 @@ body {
   	font-style: bold;
 }
 
-/* Leave Form */
+#Options{
+	display: flex;
+	align-self: center;
+}
 
-.leave_form{
+#DocumentImage{
+	height: 50px;
+	width: 50px;
+}
+
+#ImagePreview{
+	height: 100px;
+	width: 100px;
+	visibility: hidden;
+}
+
+.icon{
+	height: 20px;
+	width: 20px;
+}
+
+/* Leave Form */
+.leave-form{
 	display: flex;
 	flex-direction: column;
 	text-align: left;
@@ -73,16 +102,13 @@ body {
 	overflow: hidden;
 }
 
-/* From ... To */
 .range{
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr 3fr; 
 	grid-gap: 10px;
 }
 
-
-
-input, select, button,h2 {
+input, select, button,h2{
 	border: 1px solid #ddd;
 	width: auto;
 	height: 50px;
@@ -96,14 +122,13 @@ h2{
 	color: white;	
 }
 
-.button {
+.button{
 	display: grid;
 	grid-template-columns: 50% 50%;
 	align-self: center;
 }
 
-
-label {
+label{
 	display: grid;
 	grid-template-columns: 30% auto;
 	padding: 10px;
@@ -122,7 +147,7 @@ button{
   	border-radius: 10px;
 }
 
-button:hover {
+button:hover{
 	background-color: #EA2A33
 }
 
@@ -130,30 +155,29 @@ button:hover {
 	color:#333;
 }
 
-#btn_add_req{
+#BtnAddReq{
 	max-width: 400px;
 	align-self: center;
 }
 
 
-input:focus::placeholder {
-  color: transparent;
+input:focus::placeholder{
+  	color: transparent;
 }
 
-input[type=file] {
+input[type=file]{
 	background: none;
 	margin: 0 5px;
 }
 
 header,
 main,
-footer { 
+footer{ 
     padding: 16px;
     text-align: center;
 }
 
-
-header {
+header{
 	display: flex;
     background: #ddd;
     grid-area: header;
@@ -161,7 +185,7 @@ header {
     text-align: center;
 }
 
-header > img {
+header > img{
 	width: 190px;
 	height: 30px;
 }
@@ -169,16 +193,13 @@ header > img {
 main {
 	display: flex;
     grid-area: main;
-    justify-content: center;
-    align-content: center;
     flex-direction: column;
-
 }
 
-form > name {
-	background: $fcfcfc;
+form > name{
+	background: #fcfcfc;
 }
 
-footer {
+footer{
     grid-area: footer;
 }
