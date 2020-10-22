@@ -8,7 +8,7 @@ function requestPage() {
 function mainPage() {
 	document.getElementById("LeaveFormPage").style.visibility = "hidden";
 	document.getElementById("MainPage").style.visibility = "visible";
-	if (document.getElementById("List").rows.lenth == 0)
+	if (document.getElementById("List").rows.length == 1)
 		document.getElementById("List").style.visibility = "hidden";
 	else
 		document.getElementById("List").style.visibility = "visible";
@@ -33,8 +33,8 @@ function getFormData() {
 function addRequest(formId, formEmail, formName, formLeaveType, formLeaveReason, formLeaveStart, formLeaveEnd, formImage) {
 
 	let table = document.getElementById("List");
-	let rownum = table.rows.length;
-	let row = table.insertRow(rownum);
+	let rowNum = table.rows.length;
+	let row = table.insertRow(rowNum);
 
 	let id = row.insertCell(0);
 	let email = row.insertCell(1);
@@ -58,17 +58,19 @@ function addRequest(formId, formEmail, formName, formLeaveType, formLeaveReason,
 	count.innerHTML = "N/A"
 	doc.innerHTML = "<img src=" + formImage + " id = \"DocumentImage\" alt=\"document\" />";
 	edit.innerHTML = "<img class=\"icon\" src=\"image/edit.png\" alt=\"edit\"></img>";
-	del.innerHTML = "<img class=\"icon\" src=\"image/delete.png\" alt=\"delete\"  onclick:\"deleteRow(this)\" ></img>";
+	let delTag = document.getElementById("List").deleteRow(this.parentNode.parentNode.rowIndex);
+	del.innerHTML =  "<img class=\"icon\" src=\"image/delete.png\" alt=\"delete\"  onclick:"+delTag+"></img>";
 	mainPage();
 }
 
 function deleteRow(row) {
-	document.getElementById("List").deleteRow(row.rowIndex + 1);
+	 document.getElementById("List").deleteRow(row.parentNode.parentNode.rowIndex);
+
 }
 
 function daysCounter(start, end) {
 	/*
-	start = start.split('-');
+	start = start.split('-'); // 2020-10-22
 	end = end.split('-');
 
 	const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
