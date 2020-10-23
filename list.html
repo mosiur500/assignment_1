@@ -4,7 +4,7 @@
 <head>
 	<title>Enosis</title>
 	<link rel="stylesheet" type="text/css" href="stylesheet/main.css">
-	<script type="text/javascript" src="script/main.js"></script>
+	<script type="text/javascript" src="script/control.js"></script>
 </head>
 
 <body>
@@ -13,12 +13,20 @@
 	</header>
 
 	<main id="MainPage">
+		<button id="BtnAddReq" onclick="requestPage()">ADD REQUEST</button>
+
 		<div id="Options">
-			<button id="BtnAddReq" onclick="requestPage()">ADD REQUEST</button>
 			<input type="text" id="SearchQuery" name="search" placeholder="search for entry">
 			<button id="BtnSearch" onclick="Search()">Search</button>
+			<select name="sortBy" id="SortBy">
+				<option value="name">Name</option>
+				<option value="id">Id</option>
+				<option value="email">Email</option>
+			</select>
+			<button id="BtnSort" onclick="sortData()">Sort</button>
 		</div>
 		<table class="tbl-leave-data" id="List">
+
 			<tr id="TblHeader">
 				<th>ID</th>
 				<th>Email</th>
@@ -32,28 +40,16 @@
 				<th></th>
 				<th></th>
 			</tr>
-			<tr>
-				<td>500</td>
-				<td>mosiur.rahman@enosisbd.com</td>
-				<td>Mosiur Rahman Sweet</td>
-				<td>Planned</td>
-				<td>Unknown</td>
-				<td>26/11/2020</td>
-				<td>27/11/2020</td>
-				<td>2</td>
-				<td><a href="image/doc.png" target="_blank"><img id="DocumentImage" src="image/doc.png" alt="edit"></a>
-				</td>
-				<td><img class="icon" src="image/edit.png" onclick="requestPage()" alt="edit"></td>
-				<td><img class="icon" src="image/delete.png" onclick="deleteRow(this)" alt="delete"></td>
+			<tbody>
 
-			</tr>
+			</tbody>
 		</table>
 	</main>
 	<main id="LeaveFormPage">
-		<form class="leave-form" method="post">
+		<form class="leave-form" id="form" method="post">
 			<h2>Leave Form</h2>
-			<input type="text" name="fistName" id="FirstName" placeholder="First Name">
-			<input type="text" name="lastName" id="LastName" placeholder="Last Name">
+			<input type="text" name="fistName"  id="FirstName" placeholder="First Name">
+			<input type="text" name="lastName"  id="LastName" placeholder="Last Name">
 			<input type="text" name="id" id="Id" placeholder="Employee ID">
 			<input type="email" name="email" id="Email" placeholder="Email">
 			<select name="leaveType" id="LeaveType">

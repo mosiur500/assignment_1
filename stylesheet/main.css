@@ -73,7 +73,9 @@ body{
 
 #Options{
 	display: flex;
+	flex-direction: row;
 	align-self: center;
+	border-bottom: 1px solid #0B1032;
 }
 
 #DocumentImage{
