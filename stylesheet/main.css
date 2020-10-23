@@ -78,7 +78,7 @@ body{
 	border-bottom: 1px solid #0B1032;
 }
 
-#DocumentImage{
+.doc-image{
 	height: 50px;
 	width: 50px;
 }

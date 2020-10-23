@@ -1,11 +1,13 @@
 let list = new Array();
 let data;
-let SL=1;
 
 function deleteTableRow(r) {
-    let i = r.parentNode.parentNode.rowIndex;
-    console.log(i);
-    document.getElementById(List).deleteRow(i);
+    alert("delete icon");
+}
+
+function editTableRow(r) {
+    alert("edit icon");
+
 }
 
 function getFormData() {
@@ -44,17 +46,17 @@ function getFormData() {
         valid += "End Date ";
     }
     let src = document.getElementById("ImagePreview").src;
-    if(src===null) {
+    if (src === null) {
         valid += "Document ";
     }
 
     let start = new Date(leaveStart);
     let end = new Date(leaveEnd);
     let counter = Math.round((end - start) / (1000 * 60 * 60 * 24)) + 1;
-    if(counter <= 0) valid += "Start Date cannot be greater than End Date ."
-    let doc = "<img src=" + src + " id = \"DocumentImage\" alt=\"document\" />";
-    let edit = "<img class=\"icon\" id = \"edit\" src=\"image/edit.png\" alt=\"edit\"></img>";
-    let del = "<img class=\"icon\"  id = \"delete\" onclick=\"deleteTableRow(this)\" src=\"image/delete.png\" alt=\"delete\"></img>";
+    if (counter <= 0) valid += "Start Date cannot be greater than End Date ."
+    let doc = "<img src=" + src + " class = \"doc-image\" alt=\"document\" />";
+    let edit = "<img class=\"icon\" class = \"icon\" onclick=\"editTableRow(this)\" src=\"image/edit.png\" alt=\"edit\"></img>";
+    let del = "<img class=\"icon\"  class = \"icon\" onclick=\"deleteTableRow(this)\" src=\"image/delete.png\" alt=\"delete\"></img>";
 
     if (valid === "") {
         data = new Object();
@@ -69,33 +71,29 @@ function getFormData() {
         data.doc = doc;
         data.edit = edit;
         data.del = del;
-        data.sl = SL;
-        SL=SL+1;
+        data.sl = list.length;
 
         list.push(data);
         print();
         document.getElementById("form").reset();
         mainPage();
-    }else {
+    } else {
         alert(' required!!!   :' + valid);
         console.log(valid);
     }
 }
 
-
-
 function print() {
-
     // reset
     let table = document.getElementById("List");
-    for(let i=1;i<table.rows.length;i++) {
+    for (let i = 1; i < table.rows.length; i++) {
         table.deleteRow(i);
     }
 
     // update
-    for(var i=0; i<list.length;i++) {
+    for (var i = 0; i < list.length; i++) {
         let newRow = table.insertRow(table.rows.length);
-        for (var j = 0; j < Object.keys(data).length-1; j++) {
+        for (var j = 0; j < Object.keys(data).length - 1; j++) {
             var cell = newRow.insertCell();
             cell.innerHTML = list[i][Object.keys(data)[j]];
         }
@@ -131,17 +129,17 @@ function loadFile(event) {
 
 function dynamicSort(property) {
     var sortOrder = 1;
-    if(property[0] === "-") {
+    if (property[0] === "-") {
         sortOrder = -1;
         property = property.substr(1);
     }
-    return function (a,b) {
+    return function (a, b) {
         var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
         return result * sortOrder;
     }
 }
 
-function sortData(){
+function sortData() {
     let key = document.getElementById("SortBy").value;
     list.sort(dynamicSort(key));
     print();
