@@ -28,6 +28,7 @@ body{
 	visibility: hidden;
 }
 
+
 /* table: leave application details */
 .tbl-leave-data{
 	border-collapse: collapse;
@@ -40,8 +41,14 @@ body{
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-.tbl-leave-data th{
-	padding: 12px 15px;
+#TblHeader{
+  	text-align: left;
+  	background-color: #0B1032;
+  	color: white;
+  	text-align: center;
+  	width: 100%;
+  	font-size: 16px;
+  	font-style: bold;
 }
 
 .tbl-leave-data tbody tr{
@@ -52,7 +59,7 @@ body{
   background-color: #f3f3f3;
 }
 
-.tbl-leave-data tbody tr:last-of-type {
+.tbl-leave-data tbody tr:last-of-type{
   border-bottom: 2px solid #0B1032;
 }
 
@@ -61,15 +68,29 @@ body{
   color: #009879;
 }
 
-#TblHeader{
-  	text-align: left;
-  	background-color: #0B1032;
-  	color: white;
-  	text-align: center;
-  	width: 100%;
-  	font-size: 16px;
-  	font-style: bold;
+.tbl-leave-data th{
+	cursor: pointer;
+	padding: 12px 15px;
 }
+  
+.tbl-leave-data .th-sort-asc::after{
+    content: "\25b4";
+}
+  
+.tbl-leave-data .th-sort-desc::after{
+    content: "\25be";
+}
+  
+.tbl-leave-data .th-sort-asc::after,
+.tbl-leave-data .th-sort-desc::after{
+    margin-left: 5px;
+}
+  
+.tbl-leave-data .th-sort-asc,
+.tbl-leave-data .th-sort-desc{
+    background: #ddd;
+}
+  
 
 #Options{
 	display: flex;
@@ -81,6 +102,10 @@ body{
 .doc-image{
 	height: 50px;
 	width: 50px;
+}
+
+.element-number {
+	visibility: hidden;
 }
 
 #ImagePreview{
