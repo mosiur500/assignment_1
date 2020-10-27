@@ -29,7 +29,7 @@ function editTableRow(r, sl) {
     document.getElementById('LeaveReason').value = list[editIndex].reason;
     document.getElementById('LeaveStart').value = list[editIndex].from;
     document.getElementById('LeaveEnd').value = list[editIndex].to;
-    list.splice(removeIndex, 1);
+    list.splice(editIndex, 1);
     requestPage();
 }
 
