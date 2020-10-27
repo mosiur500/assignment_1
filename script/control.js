@@ -1,9 +1,3 @@
-/*
-*** BUG 1: If user cancels edit, data is lost
-*** BUG 2: Table header not listening to Click Event 
-*/
-
-
 let list = new Array();
 let data;
 let sl = 0;
@@ -34,53 +28,53 @@ function editTableRow(r, sl) {
 }
 
 function getFormData() {
-    let valid = "";
+    let emptyInput = "";
     let firstName = document.getElementById("FirstName").value;
     if (firstName === "") {
-        valid += "First Name ";
+        emptyInput += "First Name ";
     }
     let lastName = document.getElementById("LastName").value;
     if (lastName === "") {
-        valid += "Last Name ";
+        emptyInput += "Last Name ";
     }
     let fullName = firstName + " " + lastName;
     let id = document.getElementById("Id").value;
     if (id === "") {
-        valid += "Id ";
+        emptyInput += "Id ";
     }
     let email = document.getElementById("Email").value;
     if (email === "") {
-        valid += "Email ";
+        emptyInput += "Email ";
     }
     let leaveType = document.getElementById("LeaveType").value;
-    if (leaveType === -1) {
-        valid += "Leave Type ";
+    if (leaveType === "-1") {
+        emptyInput += "Leave Type ";
     }
     let leaveReason = document.getElementById("LeaveReason").value;
     if (leaveReason === "") {
-        valid += "Leave Reason ";
+        emptyInput += "Leave Reason ";
     }
     let leaveStart = document.getElementById("LeaveStart").value;
     if (leaveStart === "") {
-        valid += "Start Date ";
+        emptyInput += "Start Date ";
     }
     let leaveEnd = document.getElementById("LeaveEnd").value;
     if (leaveEnd === "") {
-        valid += "End Date ";
+        emptyInput += "End Date ";
     }
     let src = document.getElementById("ImagePreview").src;
-    if (src === null) {
-        valid += "Document ";
+    if (src == null) {
+        emptyInput += "Document ";
     }
 
     let start = new Date(leaveStart);
     let end = new Date(leaveEnd);
     let counter = Math.round((end - start) / (1000 * 60 * 60 * 24)) + 1;
-    if (counter <= 0) valid += "Start Date cannot be greater than End Date ."
+    if (counter <= 0) emptyInput += "Start Date cannot be greater than End Date ."
     let doc = "<img src=" + src + " class = \"doc-image\" alt=\"document\" />";
     let edit = "<img class=\"icon\" class = \"icon\" onclick=\"editTableRow(this," + sl + ")\" src=\"image/edit.png\"  alt=\"edit\"></img>";
     let del = "<img class=\"icon\"  class = \"icon\" onclick=\"deleteTableRow(this," + sl + ")\" src=\"image/delete.png\" alt=\"delete\"></img>";
-    if (valid === "") {
+    if (emptyInput === "") {
         data = new Object();
         data.id = id;
         data.email = email;
@@ -101,17 +95,17 @@ function getFormData() {
         document.getElementById("form").reset();
         mainPage();
     } else {
-        alert(' required!!!   : ' + valid);
-        console.log(valid);
+        alert(' required!!!   : ' + emptyInput);
+        console.log(emptyInput);
     }
 }
 
 function print() {
-    // TODO: reset
+    //reset
     let table = document.getElementById("List");
     let body = table.getElementsByTagName('tbody')[0];
     body.innerHTML = "";
-    // TODO: update
+    //update
     for (var i = 0; i < list.length; i++) {
         let newRow = body.insertRow(table.length);
         for (var j = 0; j < Object.keys(data).length - 3; j++) {
@@ -150,33 +144,11 @@ function loadFile(event) {
     return;
 };
 
-
-function dynamicSort(property) {
-    var sortOrder = 1;
-    if (property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
-    return function (a, b) {
-        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-        return result * sortOrder;
-    }
-}
-
-function sortData() {
-    let key = document.getElementById("SortBy").value;
-    list.sort(dynamicSort(key));
-    print();
-}
-
-/*
-
 function sortTableByColumn(table, column, asc = true) {
     const dirModifier = asc ? 1 : -1;
     const tBody = table.tBodies[0];
     const rows = Array.from(tBody.querySelectorAll("tr"));
 
-    // Sort each row
     const sortedRows = rows.sort((a, b) => {
         const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim();
         const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim();
@@ -184,30 +156,21 @@ function sortTableByColumn(table, column, asc = true) {
         return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier);
     });
 
-    // Remove all existing TRs from the table
     while (tBody.firstChild) {
         tBody.removeChild(tBody.firstChild);
     }
-
-    // Re-add the newly sorted rows
     tBody.append(...sortedRows);
-
-    // Remember how the column is currently sorted
     table.querySelectorAll("th").forEach(th => th.classList.remove("th-sort-asc", "th-sort-desc"));
     table.querySelector(`th:nth-child(${column + 1})`).classList.toggle("th-sort-asc", asc);
     table.querySelector(`th:nth-child(${column + 1})`).classList.toggle("th-sort-desc", !asc);
 }
 
-document.querySelectorAll(".table-sortable th").forEach(headerCell => {
-    headerCell.addEventListener("click", () => {
-        const tableElement = headerCell.parentElement.parentElement.parentElement;
-        const headerIndex = Array.prototype.indexOf.call(headerCell.parentElement.children, headerCell);
-        const currentIsAscending = headerCell.classList.contains("th-sort-asc");
-
-        sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
-    });
-});
-*/
+function sortTableData(c) {
+    const tableElement = c.parentElement.parentElement.parentElement;
+    const headerIndex = c.cellIndex;
+    const currentIsAscending = c.classList.contains("th-sort-asc");
+    sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
+}
 
 function Search() {
     let input = document.getElementById("SearchQuery");

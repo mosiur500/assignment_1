@@ -5,7 +5,6 @@
 	<title>Leave Application</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" type="text/css" href="stylesheet/main.css">
-	<script type="text/javascript" src="script/control.js"></script>
 </head>
 
 <body>
@@ -14,22 +13,16 @@
 	</header>
 
 	<main id="MainPage">
-		<button id="BtnAddReq" onclick="requestPage()">ADD REQUEST</button>
 		<div id="Options">
+		<button id="BtnAddReq" onclick="requestPage()">ADD REQUEST</button>
 			<input type="text" id="SearchQuery" name="search" placeholder="search for entry" onkeyup="Search()">
-			<select name="sortBy" id="SortBy">
-				<option value="name">Name</option>
-				<option value="id">Id</option>
-				<option value="email">Email</option>
-			</select>
-			<button id="BtnSort" onclick="sortData()">Sort</button>
 		</div>
 		<table class="tbl-leave-data" id="List">
 			<thead>
 				<tr id="TblHeader">
-					<th th-sort-asc>ID</th>
-					<th>Email</th>
-					<th>Name</th>
+					<th id="ListID" onclick="sortTableData(this)">ID</th>
+					<th id="ListEmail" onclick="sortTableData(this)"">Email</th>
+					<th id=" ListName" onclick="sortTableData(this)">Name</th>
 					<th>Leave Type</th>
 					<th>Leave Reason</th>
 					<th>From</th>
@@ -41,7 +34,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+
 			</tbody>
 		</table>
 	</main>
@@ -72,11 +65,10 @@
 			<button id="cancel" value="cancel" onclick="mainPage();">Cancel</button> </div>
 
 	</main>
-
 	<footer>
 		<p>© 2020 Enosis Solutions. All Rights Reserved.</p>
 	</footer>
-
+	<script type="text/javascript" src="script/control.js"></script>
 </body>
 
 </html>

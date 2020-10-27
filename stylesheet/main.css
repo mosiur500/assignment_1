@@ -24,10 +24,10 @@ body{
 	visibility: hidden;
 }
 
+
 #List{
 	visibility: hidden;
 }
-
 
 /* table: leave application details */
 .tbl-leave-data{
@@ -88,10 +88,9 @@ body{
   
 .tbl-leave-data .th-sort-asc,
 .tbl-leave-data .th-sort-desc{
-    background: #ddd;
+    background: #EA2A33
 }
   
-
 #Options{
 	display: flex;
 	flex-direction: row;
@@ -186,7 +185,6 @@ button:hover{
 	max-width: 400px;
 	align-self: center;
 }
-
 
 input:focus::placeholder{
   	color: transparent;
