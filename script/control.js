@@ -139,7 +139,7 @@ function showListPage() {
     return;
 }
 
-function loadFile(event) {
+function showDocumentPreview(event) {
     let image = document.getElementById("ImagePreview");
     image.src = URL.createObjectURL(event.target.files[0]);
     document.getElementById("ImagePreview").style.visibility = "visible";

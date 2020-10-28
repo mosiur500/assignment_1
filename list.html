@@ -15,8 +15,8 @@
 
 	<main id="ListPage">
 		<div id="Options">
-		<button id="BtnAddReq" onclick="showFormPage()">ADD REQUEST</button>
-			<input type="text" id="SearchQuery" name="search" placeholder="search for entry" onkeyup="searchTableData()">
+		<button id="BtnAddReq">ADD REQUEST</button>
+			<input type="text" id="SearchQuery" name="search" placeholder="search for entry">
 		</div>
 		<table class="tbl-leave-data" id="List">
 			<thead>
@@ -57,13 +57,13 @@
 				To:<input type="date" id="LeaveEnd" placeholder="dd-mm-yyyy" name="leave_end">
 			</label>
 			<label for="file">Upload Image
-				<input type="file" accept="image/*" name="image" id="File" onchange="loadFile(event)">
+				<input type="file" accept="image/*" name="image" id="File" onchange="showDocumentPreview(event)">
 				<img id="ImagePreview" /></label>
 			</label>
 		</form>
 		<div class="button">
-			<button id="submit" value="Submit" onclick="getFormData();">Submit</button>
-			<button id="cancel" value="cancel" onclick="showListPage();">Cancel</button> 
+			<button id="Submit" value="Submit";">Submit</button>
+			<button id="Cancel" value="Cancel";">Cancel</button> 
 		</div>
 	</main>
 	<footer>
