@@ -5,17 +5,18 @@
 	<title>Leave Application</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" type="text/css" href="stylesheet/main.css">
+	<script src="script/jquery-3.5.1.js"></script>
 </head>
 
 <body>
 	<header>
-		<img id="enosis-logo" src="https://www.enosisbd.com/wp-content/uploads/2020/07/enosis-logo.png">
+		<img id="EnosisLogo" src="https://www.enosisbd.com/wp-content/uploads/2020/07/enosis-logo.png">
 	</header>
 
-	<main id="MainPage">
+	<main id="ListPage">
 		<div id="Options">
-		<button id="BtnAddReq" onclick="requestPage()">ADD REQUEST</button>
-			<input type="text" id="SearchQuery" name="search" placeholder="search for entry" onkeyup="Search()">
+		<button id="BtnAddReq" onclick="showFormPage()">ADD REQUEST</button>
+			<input type="text" id="SearchQuery" name="search" placeholder="search for entry" onkeyup="searchTableData()">
 		</div>
 		<table class="tbl-leave-data" id="List">
 			<thead>
@@ -38,8 +39,8 @@
 			</tbody>
 		</table>
 	</main>
-	<main id="LeaveFormPage">
-		<form class="leave-form" id="form" method="post">
+	<main id="FormPage">
+		<form class="leave-form" id="Form" method="post">
 			<h2>Leave Form</h2>
 			<input type="text" name="fistName" id="FirstName" placeholder="First Name">
 			<input type="text" name="lastName" id="LastName" placeholder="Last Name">
@@ -62,13 +63,13 @@
 		</form>
 		<div class="button">
 			<button id="submit" value="Submit" onclick="getFormData();">Submit</button>
-			<button id="cancel" value="cancel" onclick="mainPage();">Cancel</button> </div>
-
+			<button id="cancel" value="cancel" onclick="showListPage();">Cancel</button> 
+		</div>
 	</main>
 	<footer>
 		<p>© 2020 Enosis Solutions. All Rights Reserved.</p>
 	</footer>
-	<script type="text/javascript" src="script/control.js"></script>
+	<script type="text/javascript" src="script/jQueryMain.js"></script>
 </body>
 
 </html>

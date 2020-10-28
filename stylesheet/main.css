@@ -16,11 +16,11 @@ body{
                          "footer footer footer";
 }
 
-#MainPage{
+#ListPage{
 	visibility: visible;
 }
 
-#LeaveFormPage{
+#FormPage{
 	visibility: hidden;
 }
 

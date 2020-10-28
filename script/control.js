@@ -2,18 +2,18 @@ let list = new Array();
 let data;
 let sl = 0;
 
-function deleteTableRow(r, sl) {
+function deleteTableRow(row, sl) {
     //* delete from table
     let table = document.getElementById('List').getElementsByTagName('tbody')[0];
-    let currentRow = r.parentElement.parentElement;
+    let currentRow = row.parentElement.parentElement;
     table.deleteRow(currentRow);
     //* delete from data structure
     let removeIndex = list.map(function (item) { return item.sl; }).indexOf(sl);
     list.splice(removeIndex, 1);
-    mainPage();
+    showListPage();
 }
 
-function editTableRow(r, sl) {
+function editTableRow(row, sl) {
     let editIndex = list.map(function (item) { return item.sl; }).indexOf(sl);
     document.getElementById('FirstName').value = list[editIndex].firstName;
     document.getElementById('LastName').value = list[editIndex].lastName;
@@ -26,7 +26,7 @@ function editTableRow(r, sl) {
     document.getElementById('ImagePreview').value = list[editIndex].src;
     document.getElementById('ImagePreview').style.visibility="visible";
     list.splice(editIndex, 1);
-    requestPage();
+    showFormPage();
 }
 
 function getFormData() {
@@ -95,14 +95,14 @@ function getFormData() {
         sl = sl + 1;
         list.push(data);
         document.getElementById("form").reset();
-        mainPage();
+        showListPage();
     } else {
         alert(' required!!!   : ' + emptyInput);
         console.log(emptyInput);
     }
 }
 
-function print() {
+function showTableData() {
     //reset
     let table = document.getElementById("List");
     let body = table.getElementsByTagName('tbody')[0];
@@ -117,18 +117,18 @@ function print() {
     }
 }
 
-function requestPage() {
-    document.getElementById("LeaveFormPage").style.visibility = "visible";
-    document.getElementById("MainPage").style.visibility = "hidden";
+function showFormPage() {
+    document.getElementById("FormPage").style.visibility = "visible";
+    document.getElementById("ListPage").style.visibility = "hidden";
     document.getElementById("List").style.visibility = "hidden";
     scroll(0, 0);
     return;
 }
 
-function mainPage() {
-    print();
-    document.getElementById("LeaveFormPage").style.visibility = "hidden";
-    document.getElementById("MainPage").style.visibility = "visible";
+function showListPage() {
+    showTableData();
+    document.getElementById("FormPage").style.visibility = "hidden";
+    document.getElementById("ListPage").style.visibility = "visible";
     document.getElementById("ImagePreview").style.visibility = "hidden";
     if (document.getElementById("List").rows.length == 1)
         document.getElementById("List").style.visibility = "hidden";
@@ -167,14 +167,14 @@ function sortTableByColumn(table, column, asc = true) {
     table.querySelector(`th:nth-child(${column + 1})`).classList.toggle("th-sort-desc", !asc);
 }
 
-function sortTableData(c) {
-    const tableElement = c.parentElement.parentElement.parentElement;
-    const headerIndex = c.cellIndex;
-    const currentIsAscending = c.classList.contains("th-sort-asc");
+function sortTableData(column) {
+    const tableElement = column.parentElement.parentElement.parentElement;
+    const headerIndex = column.cellIndex;
+    const currentIsAscending = column.classList.contains("th-sort-asc");
     sortTableByColumn(tableElement, headerIndex, !currentIsAscending);
 }
 
-function Search() {
+function searchTableData() {
     let input = document.getElementById("SearchQuery");
     let filter = input.value.toUpperCase();
     let table = document.getElementById("List");
